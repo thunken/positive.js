@@ -3,7 +3,7 @@
     $.fn.positive = function( options ) {
 
         if (this.length > 1) {
-            throw new Error('You cannot instanciate Positive.js on multiple buttons.');
+            throw new Error('You cannot instantiate Positive.js on multiple buttons.');
         }
 
         var settings = $.extend({
