@@ -17,6 +17,11 @@
             locationCheckBoxId: 'location-checkbox',
             screenshotPlaceholderId: 'screenshot-placeholder',
 
+            /**
+             * This function is executed when right before the screenshot canvas is generated
+             *
+             * @param previewElement
+             */
             showLoader: function (previewElement) {
                 previewElement.prepend($('<div class="sk-three-bounce"> \
                                     <div class="sk-child sk-bounce1"></div> \
@@ -25,16 +30,43 @@
                                   </div>')
                 );
             },
+
+            /**
+             * This function is executed when right after the screenshot canvas is generated
+             *
+             * @param previewElement
+             */
             hideLoader: function (previewElement) {
                 previewElement.children('.sk-three-bounce').remove();
             },
 
+            /**
+             * Add some magic before the screenshot is generated
+             */
             onScreenshotLoad:  function () {},
+
+            /**
+             * Add some magic after the screenshot is generated
+             */
             onScreenshotLoaded: function() {},
+
+            /**
+             * This function is called when the form has been submitted and the server responded successfully
+             *
+             * @param modal
+             * @param data
+             */
             onSubmitSuccess: function (modal, data) {
                 // Closing modal on success
                 modal.modal('hide');
             },
+
+            /**
+             * This function is called when the form has been submitted but the server responded with an error
+             *
+             * @param modal
+             * @param error
+             */
             onSubmitError: function (modal, error) {
                 modal.modal('hide');
                 window.alert('An error occured, please try again later');
