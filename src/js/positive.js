@@ -132,11 +132,12 @@
 
             var data = $.map({
                 browser: JSON.stringify(browserInfoCache),
-                image: canvasData,
-                form: $form.serialize()
+                image: canvasData
             }, function(element, name) {
                 return name + '=' + element;
             }).join('&');
+
+            data = data + '&' + $form.serialize();
 
             $.ajax({
                 url: targetUrl,
