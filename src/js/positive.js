@@ -126,8 +126,8 @@
             var $form = $(this);
 
             var canvasData = null;
-            if ($screenshotCheckbox.is(':checked') && ($('canvas', $preview).length > 0)) {
-                canvasData = $('canvas', $preview)[0].toDataURL();
+            if ($screenshotCheckbox.is(':checked') && canvasCache !== null) {
+                canvasData = canvasCache.toDataURL("image/png");
             }
 
             var data = $.map({
