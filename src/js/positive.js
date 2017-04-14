@@ -1,6 +1,5 @@
 (function ( $ ) {
 
-
     $.fn.positive = function( options ) {
 
         if (this.length > 1) {
@@ -42,6 +41,7 @@
             }
         }, $.fn.positive.defaults, options);
 
+        // Setting some private variables
         var canvasCache = null;
         var browserInfoCache = null;
         var targetUrl = null;
@@ -55,6 +55,7 @@
 
         var previewSelector = '.preview';
 
+        // Handling screenshot when checkbox value changes
         $screenshotCheckbox.bind('change', function (event) {
             var $checkbox = $(this);
             var $preview = $(previewSelector, $screenshotPlaceholder);
@@ -68,6 +69,7 @@
             }
         });
 
+        // Handling location when checkbox value changes
         $locationCheckbox.bind('change', function (event) {
             var $checkbox = $(this);
             var denizen = new Denizen();
@@ -84,6 +86,7 @@
             }
         });
 
+        // Handling form submission
         $form.on('submit', function (event) {
             event.preventDefault();
 
@@ -94,7 +97,7 @@
             if ($screenshotCheckbox.is(':checked') && ($('canvas', $preview).length > 0)) {
                 canvasData = $('canvas', $preview)[0].toDataURL();
             }
-            
+
             var data = $.map({
                 browser: JSON.stringify(browserInfoCache),
                 image: canvasData,
@@ -117,6 +120,7 @@
             });
         });
 
+        // Handling click on the feedback button
         this.bind('click', function (event) {
             targetUrl = $feedbackButton.data('target-url');
             $feedBackModal.modal();
@@ -137,13 +141,14 @@
             });
         });
 
+        // Handling modal when it closes
         $feedBackModal.bind('hidden.modal.bs', function() {
             // Resetting form on close
             $form[0].reset();
         });
 
         /**
-         * Generate and save the screenshot
+         * Generate and cache the screenshot in a var
          *
          * @function callback
          */
