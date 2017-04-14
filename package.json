@@ -1,0 +1,17 @@
+{
+  "name": "positive.js",
+  "version": "1.0.0",
+  "license" : "SEE LICENSE IN LICENSE",
+  "private": false,
+  "devDependencies": {
+
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "html2canvas": "*",
+    "spinkit": "*",
+
+    "denizen.js": "https://github.com/thunken/denizen.js.git#1.0.4"
+  }
+}
