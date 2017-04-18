@@ -1,6 +1,6 @@
 {
   "name": "positive.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license" : "SEE LICENSE IN LICENSE",
   "private": false,
   "devDependencies": {
@@ -12,6 +12,6 @@
     "html2canvas": "*",
     "spinkit": "*",
 
-    "denizen.js": "https://github.com/thunken/denizen.js.git#1.0.4"
+    "denizen.js": "https://github.com/thunken/denizen.js.git#1.0.5"
   }
 }
