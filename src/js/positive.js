@@ -51,15 +51,31 @@
             onScreenshotLoaded: function() {},
 
             /**
+             * This function is called right before the form is submitted
+             *
+             * @param modal
+             * @param data
+             */
+            onFormSubmit: function (modal, form) {},
+
+            /**
+             * This function is called right after the form is submitted and the server replied
+             *
+             * @param modal
+             * @param data
+             */
+            onFormSubmitted: function (modal, form) {
+                // Closing modal once form submitted
+                modal.modal('hide');
+            },
+
+            /**
              * This function is called when the form has been submitted and the server responded successfully
              *
              * @param modal
              * @param data
              */
-            onSubmitSuccess: function (modal, data) {
-                // Closing modal on success
-                modal.modal('hide');
-            },
+            onSubmitSuccess: function (modal, data) {},
 
             /**
              * This function is called when the form has been submitted but the server responded with an error
@@ -68,7 +84,7 @@
              * @param error
              */
             onSubmitError: function (modal, error) {
-                modal.modal('hide');
+                // User has to know an error occured
                 window.alert('An error occured, please try again later');
             }
         }, $.fn.positive.defaults, options);
@@ -139,6 +155,8 @@
 
             data = data + '&' + $form.serialize();
 
+            settings.onFormSubmit($feedBackModal, $form);
+
             $.ajax({
                 url: targetUrl,
                 type: 'post',
@@ -150,6 +168,8 @@
                     settings.onSubmitError($feedBackModal, error);
                 },
                 data: data
+            }).always(function (){
+                settings.onFormSubmitted($feedBackModal, $form);
             });
         });
 
