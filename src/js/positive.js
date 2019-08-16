@@ -210,13 +210,12 @@
                 settings.onScreenshotLoad();
                 settings.showLoader($(previewSelector, $screenshotPlaceholder));
                 html2canvas(document.body, {
-                    onrendered: function (canvas) {
-                        callback(canvas);
-                        settings.onScreenshotLoaded();
-                        settings.hideLoader($(previewSelector, $screenshotPlaceholder));
-                    },
                     width: window.screen.availWidth,
                     height: window.screen.availHeight
+                }).then(function (canvas) {
+                       callback(canvas);
+                       settings.onScreenshotLoaded();
+                       settings.hideLoader($(previewSelector, $screenshotPlaceholder));
                 });
             }
         };
